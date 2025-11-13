@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Mock Interview Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Auth Screen -->
+    <div id="authScreen" class="screen active">
+        <div class="auth-container">
+            <h1>🎤 AI Mock Interview</h1>
+            <p class="subtitle">Practice with AI-powered interviews</p>
+            
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <input type="text" id="registerName" placeholder="Full Name" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <input type="text" id="registerProfession" placeholder="Profession (e.g., Software Engineer)" required>
+                <select id="registerExperience" required>
+                    <option value="">Select Experience Level</option>
+                    <option value="junior">Junior</option>
+                    <option value="mid">Mid-Level</option>
+                    <option value="senior">Senior</option>
+                </select>
+                <button type="submit" class="btn-primary">Register</button>
+            </form>
+
+            <div id="authError" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Interview Setup Screen -->
+    <div id="setupScreen" class="screen">
+        <div class="setup-container">
+            <h2>Start Your Interview</h2>
+            <form id="setupForm">
+                <input type="text" id="profession" placeholder="Profession (e.g., Software Engineer)" required>
+                <select id="experienceLevel" required>
+                    <option value="">Select Experience Level</option>
+                    <option value="junior">Junior</option>
+                    <option value="mid">Mid-Level</option>
+                    <option value="senior">Senior</option>
+                </select>
+                <button type="submit" class="btn-primary">Start Interview</button>
+            </form>
+            <button id="logoutBtn" class="btn-secondary">Logout</button>
+        </div>
+    </div>
+
+    <!-- Interview Screen -->
+    <div id="interviewScreen" class="screen">
+        <div class="interview-container">
+            <header class="interview-header">
+                <div class="user-info">
+                    <span id="userName"></span>
+                    <button id="logoutBtn2" class="btn-link">Logout</button>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <span id="progressText">Question 1 of 9</span>
+                </div>
+            </header>
+
+            <main class="interview-main">
+                <div class="question-section">
+                    <h3 id="questionText">Loading question...</h3>
+                    <p id="focusArea" class="focus-area"></p>
+                </div>
+
+                <div class="answer-section">
+                    <label for="answer">Your Answer:</label>
+                    <textarea id="answer" rows="6" placeholder="Type your answer or use voice input..."></textarea>
+                    <div class="voice-controls">
+                        <button id="voiceInputBtn" class="btn-voice">
+                            <span class="mic-icon">🎤</span>
+                            <span id="voiceStatus">Start Voice Input</span>
+                        </button>
+                        <button id="speakQuestionBtn" class="btn-voice">
+                            <span class="speaker-icon">🔊</span>
+                            Speak Question
+                        </button>
+                    </div>
+                </div>
+
+                <div id="feedbackSection" class="feedback-section hidden">
+                    <h4>AI Feedback</h4>
+                    <div class="score-display">
+                        <span class="score-label">Score:</span>
+                        <span id="scoreValue" class="score-value">0</span>/100
+                    </div>
+                    <div class="feedback-content">
+                        <div class="strengths">
+                            <h5>✅ Strengths:</h5>
+                            <ul id="strengthsList"></ul>
+                        </div>
+                        <div class="improvements">
+                            <h5>💡 Improvements:</h5>
+                            <ul id="improvementsList"></ul>
+                        </div>
+                        <div class="tip">
+                            <h5>💬 Next Tip:</h5>
+                            <p id="nextTip"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="submitAnswerBtn" class="btn-primary">Submit Answer</button>
+                    <button id="nextQuestionBtn" class="btn-primary hidden">Next Question</button>
+                    <button id="finishInterviewBtn" class="btn-primary hidden">Finish Interview</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Final Report Screen -->
+    <div id="reportScreen" class="screen">
+        <div class="report-container">
+            <h2>🎉 Interview Complete!</h2>
+            <div id="reportContent">
+                <div class="report-section">
+                    <h3>Summary</h3>
+                    <p id="reportSummary"></p>
+                </div>
+                <div class="report-section">
+                    <h3>Top Strengths</h3>
+                    <ul id="reportStrengths"></ul>
+                </div>
+                <div class="report-section">
+                    <h3>Areas for Improvement</h3>
+                    <ul id="reportImprovements"></ul>
+                </div>
+                <div class="report-section">
+                    <h3>30-Day Roadmap</h3>
+                    <ol id="reportRoadmap"></ol>
+                </div>
+            </div>
+            <div class="report-actions">
+                <button id="newInterviewBtn" class="btn-primary">Start New Interview</button>
+                <button id="logoutBtn3" class="btn-secondary">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
+
